@@ -1,0 +1,39 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Customer Records</title>  
+     {% load static %}  
+    <link rel="stylesheet" href="{% static 'static/css/style.css' %}"/>  
+</head>  
+<body>  
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+        <th>Customer ID</th>  
+        <th>Customer Name</th>  
+        <th>Customer Address</th>  
+        <th>Serial Meter No</th>  
+        <th>Actions</th>  
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for c in customer %}  
+    <tr>  
+        <td>{{ c.custid }}</td>  
+        <td>{{ c.custname }}</td>  
+        <td>{{ c.custaddress }}</td>  
+        <td>{{ c.meterno }}</td>  
+        <td>  
+            <a href="/edit/{{ c.custid }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/delete/{{ c.custid }}">Delete</a>  
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+<br>  
+<center><a href="/customer" class="btn btn-primary">Add New Record</a></center>  
+</body>  
+</html>  
